@@ -29,6 +29,11 @@ export default function SignupForm() {
   const [formResponse, setFormResponse] = useState<FormResponse>({});
   const form = useForm<z.infer<typeof SignupSchema>>({
     resolver: zodResolver(SignupSchema),
+    defaultValues:{
+      name:'',
+      email:'',
+      password:'',
+    }
   });
 
   async function onSubmit(values: z.infer<typeof SignupSchema>) {
@@ -106,8 +111,8 @@ export default function SignupForm() {
           </Button>
         </form>
       </Form>
-      {formResponse.message ? <FormSuccess message="success" /> : null}
-      {formResponse.error ? <FormError error="success" /> : null}
+      {formResponse?.message ? <FormSuccess message="success" /> : null}
+      {formResponse?.error ? <FormError error="success" /> : null}
     </CardWrapper>
   );
 }

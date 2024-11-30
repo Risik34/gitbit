@@ -29,6 +29,10 @@ export default function LoginForm() {
   const [formResponse, setFormResponse] = useState<FormResponse>({});
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
 
   async function onSubmit(values: z.infer<typeof LoginSchema>) {
@@ -89,8 +93,8 @@ export default function LoginForm() {
           </Button>
         </form>
       </Form>
-      {formResponse.message ? <FormSuccess message="success" /> : null}
-      {formResponse.error ? <FormError error="success" /> : null}
+      {formResponse?.message ? <FormSuccess message="success" /> : null}
+      {formResponse?.error ? <FormError error="success" /> : null}
     </CardWrapper>
   );
 }
