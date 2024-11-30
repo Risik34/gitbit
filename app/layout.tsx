@@ -1,9 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import {
-  ClerkProvider,
-} from '@clerk/nextjs';
-import { dark } from '@clerk/themes';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,15 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ClerkProvider
-        appearance={{
-          baseTheme: dark,
-        }}
-      >
-        <body>
-          <div className="h-svh dark bg-background">{children}</div>
-        </body>
-      </ClerkProvider>
+      <body className="dark bg-background text-white">
+        {/* <div className="h-screen dark bg-background">{children}</div> */}
+        {children}
+      </body>
     </html>
   );
 }

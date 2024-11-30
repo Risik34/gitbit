@@ -6,6 +6,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.scale-in-center {
+  -webkit-animation: scale-in-center 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    both;
+  animation: scale-in-center 0.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) both;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
