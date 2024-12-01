@@ -1,16 +1,17 @@
-import { Button } from '@/components/ui/button';
-import { signOut } from '@/auth';
+import { auth, signOut } from '@/auth';
 import React from 'react';
 
-export default function page() {
+export default async function page() {
+  const session = await auth();
   return (
     <form
-      action={async() => {
+      action={async () => {
         'use server';
-        signOut();
+        await signOut();
       }}
     >
-      <Button type="submit">SignOut</Button>
+      {JSON.stringify(session)}
+      <button type="submit">SignOut</button>
     </form>
   );
 }
