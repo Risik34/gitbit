@@ -15,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="dark bg-background text-white">
-        {/* <div className="h-screen dark bg-background">{children}</div> */}
         {children}
       </body>
     </html>

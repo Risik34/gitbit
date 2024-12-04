@@ -34,7 +34,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
           return { error: 'Something went wrong' };
       }
     }
-      throw err;
+    throw err;
   }
 
   //authorize
@@ -70,9 +70,21 @@ export const signup = async (values: z.infer<typeof SignupSchema>) => {
     },
   });
 
-  //Signup
-
-  return {
-    message: 'Successfully signed up',
-  };
+  try {
+    await signIn('credentials', {
+      email,
+      password,
+    });
+    return { message: 'Successfully authenticated' };
+  } catch (err) {
+    if (err instanceof AuthError) {
+      switch (err.type) {
+        case 'CredentialsSignin':
+          return { error: 'Invalid credentials' };
+        default:
+          return { error: 'Something went wrong' };
+      }
+    }
+    throw err;
+  }
 };

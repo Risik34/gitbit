@@ -111,8 +111,8 @@ export default function SignupForm() {
           </Button>
         </form>
       </Form>
-      {formResponse?.message ? <FormSuccess message="success" /> : null}
-      {formResponse?.error ? <FormError error="success" /> : null}
+      {formResponse?.message ? <FormSuccess message={formResponse.message} /> : null}
+      {formResponse?.error ? <FormError error={formResponse.error} /> : null}
     </CardWrapper>
   );
 }
